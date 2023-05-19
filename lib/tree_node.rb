@@ -15,6 +15,32 @@ class PolyTreeNode
         @parent.children << self if @parent != nil
     end
 
+    def add_child(child)
+        child.parent=(self) 
+    end
+
+    def remove_child(child)
+        raise"child is not a child of self" if !children.include?(child)
+        child.parent=(nil) 
+    end
+
+    def dfs(target)
+        return self if self.value == target
+        self.children.each do |child|
+            result = child.dfs(target)
+            return result if result !=nil
+        end
+        return nil
+    end
+
+    def bfs(target)
+
+    end
+
+
+
+
+
 
 
 
