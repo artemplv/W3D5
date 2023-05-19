@@ -34,7 +34,13 @@ class PolyTreeNode
     end
 
     def bfs(target)
+        queue = [self]
 
+        while !queue.empty?
+            node = queue.shift
+            return node if node.value == target
+            queue.concat(node.children)
+        end
     end
 
 
