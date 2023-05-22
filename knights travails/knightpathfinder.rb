@@ -26,22 +26,29 @@ class KnightPathFinder
 
     def new_move_positions(pos)
         res = KnightPathFinder.valid_moves(pos).select { |x| !@considered_positions.include?(x) }
-        @considered_positions.concat(res)
+        @considered_positions= @considered_positions.concat(res)
         res
     end
+
+    def build_move_tree
+        queue = [@root_node]
+        while !queue.empty?
+            node = queue.shift
+            positions = new_move_positions(node.value)
+            positions.each do |p| 
+                new_node= PolyTreeNode.new(p)
+                node.add_child(new_node)
+                queue<< new_node
+            end
+        end
+    end
+
+
 
     
 
 
 
 
-    # def dfs(target)
-    #     return self if self.value == target
-    #     self.children.each do |child|
-    #         result = child.dfs(target)
-    #         return result if result !=nil
-    #     end
-    #     return nil
-    # end
-
+   
 end
