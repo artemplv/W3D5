@@ -1,6 +1,5 @@
 class PolyTreeNode
     attr_reader :parent, :children , :value
-    # attr_writer :parent
 
     def initialize(value)
         @value = value
@@ -43,17 +42,7 @@ class PolyTreeNode
         end
     end
 
-
-
-
-
-
-
-
-
-
-    
-
-
-  
+    def inspect
+        "id: #{self.object_id}, value: #{self.value}"
+    end
 end
